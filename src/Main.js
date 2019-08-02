@@ -1,4 +1,5 @@
 import React from 'react';
+import Landing from './components/Landing'
 
 // import Submission from './components/Submission';
 
@@ -11,7 +12,7 @@ export class Main extends React.Component{
     }
     render(){
         return(
-            <div>Hello</div>
+            <div><Landing /></div>
         )
     }
 }
