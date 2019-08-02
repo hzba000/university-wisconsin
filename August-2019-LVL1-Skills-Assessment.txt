@@ -1,0 +1,30 @@
+Education Analytics Skills Assessment
+August 2019 – LVL 1
+
+This assessment will be used to test your programming abilities in a real-worldcontext.  Please use the following programming languages to complete this task:
+
+• React.js for you front end application
+• Python Version 3+ (If needed for a backend driver)
+
+When you have completed the assessment
+• You will need to send a link to the public git repository that contains your code
+• A formatted readme file that has detailed instructions on how to boot
+• The readme should also contain any pertinent information on how to use your application.
+
+API ENDPOINT:https://api.data.gov/ed/collegescorecard/v1/schools/
+API Query String : ?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=YOUR_API_KEY_HERE
+
+Requirements
+A page that will display the most recent school year data in a modern looking and mobile friendly page.
+* School name (and, if present, a school name alias)
+* School website
+* School city
+* School state
+* School zip 
+* Total # of students
+* A donut chart of program percentages out of 100 (only values of not null)
+* A donut chart of race/ethnicity (only values of not null)
+* Any one graph of your choosing for any other metrics in the API call
+* A button to save the page as a pdf
+* A button to download the data that populated the page
+* A button to print the page
