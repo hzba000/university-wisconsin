@@ -53,7 +53,7 @@ export default class Landing extends React.Component{
           .data(pie(data))
           .enter()
           .append("g")
-          .on("mouseover", function(d) {
+          .on("mouseover", function(d) {             
                 let g = d3.select(this)
                   .style("cursor", "pointer")
                   .style("fill", "black")
@@ -92,12 +92,46 @@ export default class Landing extends React.Component{
                   .style("fill", color(this._current));
               })
             .each(function(d, i) { this._current = i; });
-          
-          
+        
           g.append('text')
             .attr('text-anchor', 'middle')
             .attr('dy', '.35em')
             .text(text);
+// *******************************
+
+// select the svg area
+var Svg = d3.select("#legend")
+
+// create a list of keys
+var keys = ["Mister A", "Brigitte", "Eleonore", "Another friend", "Batman"]
+
+// Usually you have a color scale in your chart already
+var colorLegend = d3.scaleOrdinal()
+  .domain(keys)
+  .range(d3.schemeSet2);
+
+// Add one dot in the legend for each name.
+Svg.selectAll("mydots")
+  .data(keys)
+  .enter()
+  .append("circle")
+    .attr("cx", 100)
+    .attr("cy", function(d,i){ return 100 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+    .attr("r", 7)
+    .style("fill", function(d){ return colorLegend(d)})
+
+// Add one dot in the legend for each name.
+Svg.selectAll("mylabels")
+  .data(keys)
+  .enter()
+  .append("text")
+    .attr("x", 120)
+    .attr("y", function(d,i){ return 100 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+    .style("fill", function(d){ return colorLegend(d)})
+    .text(function(d){ return d})
+    .attr("text-anchor", "left")
+    .style("alignment-baseline", "middle")
+            
     }
 
     fetchData(){
@@ -185,7 +219,10 @@ export default class Landing extends React.Component{
 
     render(){
         return(
-            <div id="chart"></div>
+            <div>
+                <div id="chart"></div>
+                <svg id="legend"></svg>
+            </div>
         )
     }
 }
