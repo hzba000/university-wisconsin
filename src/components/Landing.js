@@ -1,3 +1,4 @@
+import * as d3 from "d3";
 import React from 'react';
 require('dotenv').config()
 
@@ -14,14 +15,97 @@ export default class Landing extends React.Component{
 
     componentDidMount(){
         this.fetchData();
+        var data = [
+            {name: "USA", value: 40},
+            {name: "UK", value: 20},
+            {name: "Canada", value: 30},
+            {name: "Maxico", value: 10},
+          ];
+          var text = "";
+          
+          var width = 260;
+          var height = 260;
+          var thickness = 40;
+          var duration = 750;
+          
+          var radius = Math.min(width, height) / 2;
+          var color = d3.scaleOrdinal(d3.schemeCategory10);
+          
+          var svg = d3.select("#chart")
+          .append('svg')
+          .attr('class', 'pie')
+          .attr('width', width)
+          .attr('height', height);
+          
+          var g = svg.append('g')
+          .attr('transform', 'translate(' + (width/2) + ',' + (height/2) + ')');
+          
+          
+          var arc = d3.arc()
+          .innerRadius(radius - thickness)
+          .outerRadius(radius);
+          
+          var pie = d3.pie()
+          .value(function(d) { return d.value; })
+          .sort(null);
+          
+          var path = g.selectAll('path')
+          .data(pie(data))
+          .enter()
+          .append("g")
+          .on("mouseover", function(d) {
+                let g = d3.select(this)
+                  .style("cursor", "pointer")
+                  .style("fill", "black")
+                  .append("g")
+                  .attr("class", "text-group");
+           
+                g.append("text")
+                  .attr("class", "name-text")
+                  .text(`${d.data.name}`)
+                  .attr('text-anchor', 'middle')
+                  .attr('dy', '-1.2em');
+            
+                g.append("text")
+                  .attr("class", "value-text")
+                  .text(`${d.data.value}`)
+                  .attr('text-anchor', 'middle')
+                  .attr('dy', '.6em');
+              })
+            .on("mouseout", function(d) {
+                d3.select(this)
+                  .style("cursor", "none")  
+                  .style("fill", color(this._current))
+                  .select(".text-group").remove();
+              })
+            .append('path')
+            .attr('d', arc)
+            .attr('fill', (d,i) => color(i))
+            .on("mouseover", function(d) {
+                d3.select(this)     
+                  .style("cursor", "pointer")
+                  .style("fill", "black");
+              })
+            .on("mouseout", function(d) {
+                d3.select(this)
+                  .style("cursor", "none")  
+                  .style("fill", color(this._current));
+              })
+            .each(function(d, i) { this._current = i; });
+          
+          
+          g.append('text')
+            .attr('text-anchor', 'middle')
+            .attr('dy', '.35em')
+            .text(text);
     }
 
     fetchData(){
         fetch(`https://api.data.gov/ed/collegescorecard/v1/schools/?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=${API_KEY}`)
-            .then(function(response) {
+            .then(response => {
                  return response.json();
             })
-            .then(function(myJson) {
+            .then(myJson => {
                 // console.log(JSON.stringify(myJson));
                 console.log(myJson.results[0].school.name)
                 console.log(myJson.results[0].school.school_url)
@@ -31,6 +115,7 @@ export default class Landing extends React.Component{
                 console.log(myJson.results[0].latest.student.size)
                 console.log("Grad Students" + myJson.results[0].latest.student.grad_students)
                 console.log(myJson.results[0].latest.student.demographics.race_ethnicity.white)
+                console.log(myJson.results[0].latest.academics.program_percentage.education)
 //                 "nhpi": 0.001,
 // "non_resident_alien": 0.0913,
 // "black_2000": 0.0205,
@@ -99,6 +184,8 @@ export default class Landing extends React.Component{
     }
 
     render(){
-        return(<p>From Landing</p>)
+        return(
+            <div id="chart"></div>
+        )
     }
 }
