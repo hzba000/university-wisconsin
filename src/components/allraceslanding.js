@@ -51,15 +51,15 @@ export default class Landing extends React.Component{
                         programDataArray.push(newObject);
                     }
 
-                    // for (let key in myJson.results[0].latest.student.demographics.race_ethnicity){
-                    //     let newObject = {}
-                    //     let name = 'name';
-                    //     let value = 'value';
-                    //     newObject[name] = key;
-                    //     newObject[value] = myJson.results[0].latest.student.demographics.race_ethnicity[key] ;
-                    //     // newObject[key] = myJson.results[0].latest.academics.program_percentage[key] 
-                    //     ethnicityDataArray.push(newObject);
-                    // }
+                    for (let key in myJson.results[0].latest.student.demographics.race_ethnicity){
+                        let newObject = {}
+                        let name = 'name';
+                        let value = 'value';
+                        newObject[name] = key;
+                        newObject[value] = myJson.results[0].latest.student.demographics.race_ethnicity[key] ;
+                        // newObject[key] = myJson.results[0].latest.academics.program_percentage[key] 
+                        ethnicityDataArray.push(newObject);
+                    }
                 
 
                 // console.log(myJson.results[0].latest.academics.program_percentage);
@@ -68,19 +68,19 @@ export default class Landing extends React.Component{
                 this.setState(
                     {
                         programdata: programDataArray,
-                        // ethnicitydata: ethnicityDataArray,
+                        ethnicitydata: ethnicityDataArray,
                         schoolname: myJson.results[0].school.name,
                         schoolurl: myJson.results[0].school.school_url,
                         schoolcity: myJson.results[0].school.city,
                         schoolstate: myJson.results[0].school.state,
                         schoolzip: myJson.results[0].school.zip,
-                        racewhite: myJson.results[0].latest.student.demographics.race_ethnicity.white,
-                        racehispanic: myJson.results[0].latest.student.demographics.race_ethnicity.hispanic,
-                        raceasian: myJson.results[0].latest.student.demographics.race_ethnicity.asian,
-                        raceblack: myJson.results[0].latest.student.demographics.race_ethnicity.black,
-                        racehispanic: myJson.results[0].latest.student.demographics.race_ethnicity.hispanic,
-                        raceasian: myJson.results[0].latest.student.demographics.race_ethnicity.asian,
-                        raceblack: myJson.results[0].latest.student.demographics.race_ethnicity.black
+                        // racewhite: myJson.results[0].latest.student.demographics.race_ethnicity.white,
+                        // racehispanic: myJson.results[0].latest.student.demographics.race_ethnicity.hispanic,
+                        // raceasian: myJson.results[0].latest.student.demographics.race_ethnicity.asian,
+                        // raceblack: myJson.results[0].latest.student.demographics.race_ethnicity.black,
+                        // racehispanic: myJson.results[0].latest.student.demographics.race_ethnicity.hispanic,
+                        // raceasian: myJson.results[0].latest.student.demographics.race_ethnicity.asian,
+                        // raceblack: myJson.results[0].latest.student.demographics.race_ethnicity.black
                     })
 
                 // console.log(JSON.stringify(myJson));
@@ -177,11 +177,11 @@ export default class Landing extends React.Component{
         const schoolStateProp = this.state.schoolstate;
         const schoolZipProp = this.state.schoolzip;
         const raceWhiteProp = this.state.racewhite;
-        const raceHispanicProp = this.state.racehispanic;
-        const raceAsianProp = this.state.raceasian;
-        const raceBlackProp = this.state.raceblack;
+        // const raceHispanicProp = this.state.racehispanic;
+        // const raceAsianProp = this.state.raceasian;
+        // const raceBlackProp = this.state.raceblack;
         const programDataProp = this.state.programdata;
-        // const ethnicityDataProp = this.state.ethnicityDataProp;
+        const ethnicityDataProp = this.state.ethnicitydata;
         console.log(programDataProp)
 
         return(
@@ -195,10 +195,10 @@ export default class Landing extends React.Component{
                 />
                 <DonutRace 
                     raceWhiteProp={raceWhiteProp}
-                    raceHispanicProp={raceHispanicProp}
-                    raceAsianProp={raceAsianProp}
-                    raceBlackProp={raceBlackProp}
-                    // ethnicityDataProp={ethnicityDataProp}
+                    // raceHispanicProp={raceHispanicProp}
+                    // raceAsianProp={raceAsianProp}
+                    // raceBlackProp={raceBlackProp}
+                    ethnicityDataProp={ethnicityDataProp}
                 />
                 <DonutProgram programDataProp={programDataProp} raceWhiteProp={raceWhiteProp}/>
             </div>

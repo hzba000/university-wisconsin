@@ -33,6 +33,12 @@ export default class DonutRace extends React.Component{
         // {name: "Canada", value: 30},
         // {name: "Maxico", value: 10},
       ];
+
+      let raceNameArray = [];
+
+      for(let i=0; i<data.length; i++){
+        raceNameArray.push(data[i].name);
+      }
       var text = "";
       
       var width = 260; 
@@ -115,16 +121,16 @@ export default class DonutRace extends React.Component{
     var Svg = d3.select("#legend")
     
     // create a list of keys
-    var keys = ["Mister A", "Brigitte", "Eleonore", "Another friend", "Batman"]
+    // var keys = ["Mister A", "Brigitte", "Eleonore", "Another friend", "Batman"]
     
     // Usually you have a color scale in your chart already
     var colorLegend = d3.scaleOrdinal()
-    .domain(keys)
+    .domain(raceNameArray)
     .range(d3.schemeCategory10);
     
     // Add one dot in the legend for each name.
     Svg.selectAll("mydots")
-    .data(keys)
+    .data(raceNameArray)
     .enter()
     .append("circle")
     .attr("cx", 100)
@@ -134,7 +140,7 @@ export default class DonutRace extends React.Component{
     
     // Add one dot in the legend for each name.
     Svg.selectAll("mylabels")
-    .data(keys)
+    .data(raceNameArray)
     .enter()
     .append("text")
     .attr("x", 120)

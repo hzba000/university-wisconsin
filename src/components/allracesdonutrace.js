@@ -6,7 +6,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 // ----------------------------------------------------------
 
-export default class DonutProgram extends React.Component{
+export default class DonutRace extends React.Component{
     constructor(props){
         super(props)
         this.state={
@@ -16,15 +16,13 @@ export default class DonutProgram extends React.Component{
     }
 
    componentDidMount(){
-      console.log(this.props.programDataProp)
+      
    }
 
    makeDonutGraph(){
     console.log(this.props.raceWhiteProp)
     console.log(this.props.raceWhiteProp)
-    console.log(this.props.programDataProp)
-
-    var data = this.props.programDataProp;
+    var data = this.props.ethnicityDataProp;
 
     if(data){
         let raceNameArray = [];
@@ -42,7 +40,7 @@ export default class DonutProgram extends React.Component{
         var radius = Math.min(width, height) / 2;
         var color = d3.scaleOrdinal(d3.schemeCategory10);
         
-        var svg = d3.select("#chart-program")
+        var svg = d3.select("#chart")
         .append('svg')
         .attr('class', 'pie')
         .attr('width', width)
@@ -111,7 +109,7 @@ export default class DonutProgram extends React.Component{
       // *******************************
       
       // select the svg area
-      var Svg = d3.select("#legend-program")
+      var Svg = d3.select("#legend")
       
       // create a list of keys
       // var keys = ["Mister A", "Brigitte", "Eleonore", "Another friend", "Batman"]
@@ -143,22 +141,20 @@ export default class DonutProgram extends React.Component{
       .attr("text-anchor", "left")
       .style("alignment-baseline", "middle")
     }
-
     else{
         console.log("sucks for you")
     }
-      
    }
 
     render(){
         this.makeDonutGraph();
         return(
             <div>
-                <div id="chart-program"></div>
-                <svg id="legend-program"></svg>
+                <div id="chart"></div>
+                <svg id="legend"></svg>
             </div>
         )
     }
 }
 
-DonutProgram.defaultProps = {raceWhiteProp: 20};
+DonutRace.defaultProps = {raceWhiteProp: 20};
