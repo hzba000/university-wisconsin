@@ -3,6 +3,8 @@ import React from 'react';
 import DonutRace from './DonutRace'
 import DonutProgram from './DonutProgram'
 import Information from './Information'
+import Tuition from './Tuition'
+
 let programDataArray = [];
 let ethnicityDataArray = [];
 
@@ -99,6 +101,9 @@ export default class Landing extends React.Component{
 
 
                 console.log(myJson.results[0].latest.academics.program_percentage.education)
+                console.log(myJson.results[0].latest.cost.tuition.out_of_state)
+                console.log(myJson.results[0].latest.cost.tuition.in_state)
+
 
                 //put races in array and loop over them to populate graph
                 //Use a bar chart for academic programs
@@ -201,6 +206,7 @@ export default class Landing extends React.Component{
                     // ethnicityDataProp={ethnicityDataProp}
                 />
                 <DonutProgram programDataProp={programDataProp} raceWhiteProp={raceWhiteProp}/>
+                <Tuition />
             </div>
         )
     }
