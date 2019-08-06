@@ -1,3 +1,28 @@
+#dummy_download{
+  visibility:hidden;
+}
+@media print
+{
+    .no-print { page-break-after: always; display:block;}
+    .printable { display: block; }
+}
+
+@page { size: auto;  margin: 0mm; }
+
+.flex-container{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap:wrap;
+}
+
+.flex-container-donut-race, .flex-container-donut-program, .flex-container-donut-tuition{
+  display: flex;
+  flex-wrap:wrap;
+
+
+}
 
 .pie {
   margin: 20px;
@@ -38,7 +63,7 @@ body{
 }
 
 svg{
-  box-shadow: 0px 20px 50px -18px #aaa;
+  /* box-shadow: 0px 20px 50px -18px #aaa; */
   border-radius: .123rem;
 }
 .bar {
@@ -98,3 +123,4 @@ svg text{
       fill: white;
       font-family: sans-serif
     }
+  

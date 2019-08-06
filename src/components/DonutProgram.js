@@ -153,7 +153,7 @@ export default class DonutProgram extends React.Component{
     render(){
         this.makeDonutGraph();
         return(
-            <div>
+            <div class="flex-container-donut-program">
                 <div id="chart-program"></div>
                 <svg id="legend-program"></svg>
             </div>

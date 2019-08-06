@@ -4,9 +4,12 @@ import DonutRace from './DonutRace'
 import DonutProgram from './DonutProgram'
 import Information from './Information'
 import Tuition from './Tuition'
+import PrintButton from './PrintButton'
+import DownloadData from './DownloadData'
 
 let programDataArray = [];
 let ethnicityDataArray = [];
+let parentDataArray = [];
 
 
 require('dotenv').config()
@@ -29,12 +32,53 @@ export default class Landing extends React.Component{
             raceblack: null,
             programdata: null,
             ethnicitydata: null,
+            parentdata: null,
         }
         this.fetchData = this.fetchData.bind(this);
+        this.printScreen = this.printScreen.bind(this);
+        this.downloadData = this.downloadData.bind(this);
     }
 
     componentWillMount(){
         this.fetchData();
+    }
+
+    printScreen(){
+        window.print();
+    }
+
+    downloadData(){
+        let formatParentArray = [];
+        let formatProgramArray = [];
+        let formatEthnicityArray = [];
+        for(let i=0; i<programDataArray.length; i++){
+            formatProgramArray.push(Object.values(programDataArray[i]))
+        }
+        for(let i=0; i<parentDataArray.length; i++){
+            formatParentArray.push(Object.values(parentDataArray[i]))
+        }
+        for(let i=0; i<ethnicityDataArray.length; i++){
+            formatEthnicityArray.push(Object.values(ethnicityDataArray[i]))
+        }
+
+        var data = [
+            formatParentArray,
+            formatProgramArray,
+            formatEthnicityArray
+         ];
+         console.log(this.state.ethnicitydata)
+        var csv = 'Parent Education Level\n';
+        data.forEach(function(row) {
+                csv += row.join(',')+"\n";
+                csv += "\n";
+        });
+        console.log("hello")
+        console.log(csv);
+        var hiddenElement = document.getElementById('dummy_download');
+        hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+        hiddenElement.target = '_blank';
+        hiddenElement.download = 'people.csv';
+        hiddenElement.click();
     }
 
     fetchData(){
@@ -43,15 +87,27 @@ export default class Landing extends React.Component{
                  return response.json();
             })
             .then(myJson => {
+                    for (let key in myJson.results[0].latest.student.share_firstgeneration_parents){
+                        let newObject = {}
+                        let name = 'name';
+                        let value = 'value';
+                        newObject[name] = key;
+                        newObject[value] = myJson.results[0].latest.student.share_firstgeneration_parents[key].toFixed(3) ;
+                        // newObject[key] = myJson.results[0].latest.academics.program_percentage[key] 
+                        parentDataArray.push(newObject);
+                    }
+
                     for (let key in myJson.results[0].latest.academics.program_percentage){
                         let newObject = {}
                         let name = 'name';
                         let value = 'value';
                         newObject[name] = key;
-                        newObject[value] = myJson.results[0].latest.academics.program_percentage[key] ;
+                        newObject[value] = myJson.results[0].latest.academics.program_percentage[key].toFixed(3) ;
                         // newObject[key] = myJson.results[0].latest.academics.program_percentage[key] 
                         programDataArray.push(newObject);
                     }
+
+                    ethnicityDataArray.push({"name":"Black","value":myJson.results[0].latest.student.demographics.race_ethnicity.black},{"name":"White","value":myJson.results[0].latest.student.demographics.race_ethnicity.white},{"name":"Hispanic","value":myJson.results[0].latest.student.demographics.race_ethnicity.hispanic},{"name":"Asian","value":myJson.results[0].latest.student.demographics.race_ethnicity.asian})
 
                     // for (let key in myJson.results[0].latest.student.demographics.race_ethnicity){
                     //     let newObject = {}
@@ -66,10 +122,12 @@ export default class Landing extends React.Component{
 
                 // console.log(myJson.results[0].latest.academics.program_percentage);
                 console.log(programDataArray);
+                console.log(parentDataArray);
 
                 this.setState(
                     {
                         programdata: programDataArray,
+                        parentdata: parentDataArray,
                         // ethnicitydata: ethnicityDataArray,
                         schoolname: myJson.results[0].school.name,
                         schoolurl: myJson.results[0].school.school_url,
@@ -103,6 +161,9 @@ export default class Landing extends React.Component{
                 console.log(myJson.results[0].latest.academics.program_percentage.education)
                 console.log(myJson.results[0].latest.cost.tuition.out_of_state)
                 console.log(myJson.results[0].latest.cost.tuition.in_state)
+
+                console.log(myJson.results[0].latest.student.share_firstgeneration_parents)
+
 
 
                 //put races in array and loop over them to populate graph
@@ -186,18 +247,13 @@ export default class Landing extends React.Component{
         const raceAsianProp = this.state.raceasian;
         const raceBlackProp = this.state.raceblack;
         const programDataProp = this.state.programdata;
+        const parentDataProp = this.state.parentdata;
         // const ethnicityDataProp = this.state.ethnicityDataProp;
         console.log(programDataProp)
 
         return(
-            <div>
-                <Information 
-                    schoolNameProp={schoolNameProp} 
-                    schoolUrlProp={schoolUrlProp} 
-                    schoolCityProp={schoolCityProp}
-                    schoolStateProp={schoolStateProp}
-                    schoolZipProp={schoolZipProp}
-                />
+            <div class="parent">
+                <div className="flex-container">
                 <DonutRace 
                     raceWhiteProp={raceWhiteProp}
                     raceHispanicProp={raceHispanicProp}
@@ -206,7 +262,17 @@ export default class Landing extends React.Component{
                     // ethnicityDataProp={ethnicityDataProp}
                 />
                 <DonutProgram programDataProp={programDataProp} raceWhiteProp={raceWhiteProp}/>
-                <Tuition />
+                <Tuition parentDataProp={parentDataProp} raceWhiteProp={raceWhiteProp}/>
+                </div>
+                <PrintButton printScreen = {this.printScreen}/>
+                <DownloadData downloadData={this.downloadData}/>
+                <Information 
+                    schoolNameProp={schoolNameProp} 
+                    schoolUrlProp={schoolUrlProp} 
+                    schoolCityProp={schoolCityProp}
+                    schoolStateProp={schoolStateProp}
+                    schoolZipProp={schoolZipProp}
+                />
             </div>
         )
     }

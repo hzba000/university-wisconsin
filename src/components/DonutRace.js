@@ -154,7 +154,7 @@ export default class DonutRace extends React.Component{
     render(){
         this.makeDonutGraph();
         return(
-            <div>
+            <div class="flex-container-donut-race">
                 <div id="chart"></div>
                 <svg id="legend"></svg>
             </div>
