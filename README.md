@@ -16,7 +16,7 @@
  <p>View Data by dragging your mouse over the donut charts</p>
  <p>Print the website by clicking on the 'Print' button</p>
  <p>Download the data used for visualization by clicking on the 'Download CSV' button</p>
- <p>Open in Pdf by clicking on the 'Generate Pdf'</p>
+ <p>Open in Pdf by clicking on the 'Generate Pdf' button</p>
  
  <h2>Known issues</h2>
  <p>Need more media queries for responsiveness</p>
