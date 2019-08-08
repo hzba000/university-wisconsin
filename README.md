@@ -16,7 +16,7 @@
  <p>View Data by dragging your mouse over the donut charts</p>
  <p>Print the website by clicking on the 'Print' button</p>
  <p>Download the data used for visualization by clicking on the 'Download CSV' button</p>
- <p>Open in Pdf by clicking on the 'Generate Pdf'</p>
+ <p>Open in Pdf by clicking on the 'Generate Pdf' button</p>
  
  <h2>Known issues</h2>
  <p>Need more media queries for responsiveness</p>
@@ -26,7 +26,7 @@
   <p>I attempted to use jsPDF for conversion from HTML to PDF. I need more time to work through the conversion of SVG elements to canvas 
      and then to PDF</p>
   <p>I know the legends should be clickable to view hard data(Currently I only have a mouseover event)</p>
-  <p>There is some variability in the way elements are presented on various browsers, I'm not sure what is causing it</p>
+  <p>There is some variability in the way elements are presented on various browsers -- I'm not sure what is causing it</p>
   <p>There are touchups needed to make the data easier to read and enhance the user experience</p>
   <p>I need to add code to help with accessibility issues</p>
 
