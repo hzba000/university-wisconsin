@@ -96,6 +96,6 @@ html{
 @media only screen and (max-width: 600px) {
   #legend-tuition, #legend-race{
     height:300px;
-    background-color:white;
+    background-color:white; 
   }
 }
