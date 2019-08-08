@@ -1,21 +1,22 @@
-import * as d3 from "d3";
 import React from 'react';
+import $ from 'jquery'; 
+import * as jsPDF from 'jspdf'
+
 import DonutRace from './DonutRace'
 import DonutProgram from './DonutProgram'
 import Information from './Information'
 import Tuition from './Tuition'
 import PrintButton from './PrintButton'
 import DownloadData from './DownloadData'
+import DownloadPdf from './DownloadPdf'
+
+require('dotenv').config()
 
 let programDataArray = [];
 let ethnicityDataArray = [];
 let parentDataArray = [];
 
-
-require('dotenv').config()
-
 const API_KEY = process.env.REACT_APP_API_KEY;
-
 
 export default class Landing extends React.Component{
     constructor(props){
@@ -37,6 +38,23 @@ export default class Landing extends React.Component{
         this.fetchData = this.fetchData.bind(this);
         this.printScreen = this.printScreen.bind(this);
         this.downloadData = this.downloadData.bind(this);
+        this.downloadPdf = this.downloadPdf.bind(this);
+    }
+
+    downloadPdf(){
+        var doc = new jsPDF();
+        var specialElementHandlers = {
+            '#editor': function (element, renderer) {
+                return true;
+            }
+        };
+
+        doc.fromHTML($('html').html(), 15, 15, {
+            'width': 170,
+            'elementHandlers': specialElementHandlers
+        });
+    
+        doc.save('sample-file.pdf');
     }
 
     componentWillMount(){
@@ -51,6 +69,7 @@ export default class Landing extends React.Component{
         let formatParentArray = [];
         let formatProgramArray = [];
         let formatEthnicityArray = [];
+
         for(let i=0; i<programDataArray.length; i++){
             formatProgramArray.push(Object.values(programDataArray[i]))
         }
@@ -66,14 +85,13 @@ export default class Landing extends React.Component{
             formatProgramArray,
             formatEthnicityArray
          ];
-         console.log(this.state.ethnicitydata)
+
         var csv = 'Parent Education Level\n';
         data.forEach(function(row) {
                 csv += row.join(',')+"\n";
                 csv += "\n";
         });
-        console.log("hello")
-        console.log(csv);
+
         var hiddenElement = document.getElementById('dummy_download');
         hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
         hiddenElement.target = '_blank';
@@ -93,7 +111,6 @@ export default class Landing extends React.Component{
                         let value = 'value';
                         newObject[name] = key;
                         newObject[value] = myJson.results[0].latest.student.share_firstgeneration_parents[key].toFixed(3) ;
-                        // newObject[key] = myJson.results[0].latest.academics.program_percentage[key] 
                         parentDataArray.push(newObject);
                     }
 
@@ -103,29 +120,14 @@ export default class Landing extends React.Component{
                         let value = 'value';
                         newObject[name] = key;
                         newObject[value] = myJson.results[0].latest.academics.program_percentage[key].toFixed(3) ;
-                        // newObject[key] = myJson.results[0].latest.academics.program_percentage[key] 
                         programDataArray.push(newObject);
                     }
 
+                    //This is not a for loop, because the other races values made it hard to understand the racial breakup at the school
                     ethnicityDataArray.push({"name":"Black","value":myJson.results[0].latest.student.demographics.race_ethnicity.black},{"name":"White","value":myJson.results[0].latest.student.demographics.race_ethnicity.white},{"name":"Hispanic","value":myJson.results[0].latest.student.demographics.race_ethnicity.hispanic},{"name":"Asian","value":myJson.results[0].latest.student.demographics.race_ethnicity.asian})
 
-                    // for (let key in myJson.results[0].latest.student.demographics.race_ethnicity){
-                    //     let newObject = {}
-                    //     let name = 'name';
-                    //     let value = 'value';
-                    //     newObject[name] = key;
-                    //     newObject[value] = myJson.results[0].latest.student.demographics.race_ethnicity[key] ;
-                    //     // newObject[key] = myJson.results[0].latest.academics.program_percentage[key] 
-                    //     ethnicityDataArray.push(newObject);
-                    // }
-                
 
-                // console.log(myJson.results[0].latest.academics.program_percentage);
-                console.log(programDataArray);
-                console.log(parentDataArray);
-
-                this.setState(
-                    {
+                this.setState({
                         programdata: programDataArray,
                         parentdata: parentDataArray,
                         // ethnicitydata: ethnicityDataArray,
@@ -138,101 +140,7 @@ export default class Landing extends React.Component{
                         racehispanic: myJson.results[0].latest.student.demographics.race_ethnicity.hispanic,
                         raceasian: myJson.results[0].latest.student.demographics.race_ethnicity.asian,
                         raceblack: myJson.results[0].latest.student.demographics.race_ethnicity.black,
-                        racehispanic: myJson.results[0].latest.student.demographics.race_ethnicity.hispanic,
-                        raceasian: myJson.results[0].latest.student.demographics.race_ethnicity.asian,
-                        raceblack: myJson.results[0].latest.student.demographics.race_ethnicity.black
-                    })
-
-                // console.log(JSON.stringify(myJson));
-                console.log(myJson.results[0].school.name)
-                console.log(myJson.results[0].school.school_url)
-                console.log(myJson.results[0].school.city)
-                console.log(myJson.results[0].school.state)
-                console.log(myJson.results[0].school.zip)
-                console.log(myJson.results[0].latest.student.size)
-                console.log("Grad Students" + myJson.results[0].latest.student.grad_students)
-
-                console.log("WHITE"+myJson.results[0].latest.student.demographics.race_ethnicity.white)
-                console.log("HISPANIC"+myJson.results[0].latest.student.demographics.race_ethnicity.hispanic)
-                console.log("ASIAN" + myJson.results[0].latest.student.demographics.race_ethnicity.asian)
-                console.log("BLACK" + myJson.results[0].latest.student.demographics.race_ethnicity.black)
-
-
-                console.log(myJson.results[0].latest.academics.program_percentage.education)
-                console.log(myJson.results[0].latest.cost.tuition.out_of_state)
-                console.log(myJson.results[0].latest.cost.tuition.in_state)
-
-                console.log(myJson.results[0].latest.student.share_firstgeneration_parents)
-
-
-
-                //put races in array and loop over them to populate graph
-                //Use a bar chart for academic programs
-                
-//                 "nhpi": 0.001,
-// "non_resident_alien": 0.0913,
-// "black_2000": 0.0205,
-// "aian_2000": 0.0047,
-// "hispanic_prior_2009": 0,
-// "black": 0.0211,
-// "asian": 0.0599,
-// "api_2000": 0.0413, X
-// "hispanic_2000": 0.0218, X
-// "unknown_2000": 0, X
-// "unknown": 0.008, X
-// "white_non_hispanic": 0, X
-// "black_non_hispanic": 0, X
-// "asian_pacific_islander": 0, X
-// "white": 0.7318, X
-// "two_or_more": 0.0328, X
-// "hispanic": 0.0521, X
-// "aian": 0.002, X
-// "aian_prior_2009": 0, X
-// "white_2000": 0.8708 X
-
-
-
-// "academics": {
-//     "program_percentage": {
-//     "education": 0.0166,
-//     "mathematics": 0.0191,
-//     "business_marketing": 0.15,
-//     "communications_technology": 0,
-//     "language": 0.0286,
-//     "visual_performing": 0.0207,
-//     "engineering_technology": 0,
-//     "parks_recreation_fitness": 0.0129,
-//     "agriculture": 0.0328,
-//     "security_law_enforcement": 0,
-//     "computer": 0.0354,
-//     "precision_production": 0,
-//     "humanities": 0,
-//     "library": 0,
-//     "psychology": 0.0363,
-//     "social_science": 0.1014,
-//     "legal": 0.0084,
-//     "english": 0.0166,
-//     "construction": 0,
-//     "military": 0,
-//     "communication": 0.0566,
-//     "public_administration_social_service": 0.01,
-//     "architecture": 0.0029,
-//     "ethnic_cultural_gender": 0.0095,
-//     "resources": 0.0178,
-//     "health": 0.0548,
-//     "engineering": 0.1332,
-//     "history": 0.015,
-//     "theology_religious_vocation": 0,
-//     "transportation": 0,
-//     "physical_science": 0.0225,
-//     "science_technology": 0,
-//     "biological": 0.1384,
-//     "family_consumer_science": 0.0287,
-//     "philosophy_religious": 0.0072,
-//     "personal_culinary": 0,
-//     "multidiscipline": 0.0247,
-//     "mechanic_repair_technology": 0
-//     }
+                })
             });
     }
 
@@ -249,23 +157,23 @@ export default class Landing extends React.Component{
         const programDataProp = this.state.programdata;
         const parentDataProp = this.state.parentdata;
         // const ethnicityDataProp = this.state.ethnicityDataProp;
-        console.log(programDataProp)
 
         return(
-            <div class="parent">
+            <div className="parent">
                 <div className="flex-container">
-                <DonutRace 
-                    raceWhiteProp={raceWhiteProp}
-                    raceHispanicProp={raceHispanicProp}
-                    raceAsianProp={raceAsianProp}
-                    raceBlackProp={raceBlackProp}
-                    // ethnicityDataProp={ethnicityDataProp}
-                />
-                <DonutProgram programDataProp={programDataProp} raceWhiteProp={raceWhiteProp}/>
-                <Tuition parentDataProp={parentDataProp} raceWhiteProp={raceWhiteProp}/>
+                    <DonutRace 
+                        raceWhiteProp={raceWhiteProp}
+                        raceHispanicProp={raceHispanicProp}
+                        raceAsianProp={raceAsianProp}
+                        raceBlackProp={raceBlackProp}
+                        // ethnicityDataProp={ethnicityDataProp}
+                    />
+                    <DonutProgram programDataProp={programDataProp} raceWhiteProp={raceWhiteProp}/>
+                    <Tuition parentDataProp={parentDataProp} raceWhiteProp={raceWhiteProp}/>
                 </div>
                 <PrintButton printScreen = {this.printScreen}/>
                 <DownloadData downloadData={this.downloadData}/>
+                <DownloadPdf downloadPdf={this.downloadPdf}/>
                 <Information 
                     schoolNameProp={schoolNameProp} 
                     schoolUrlProp={schoolUrlProp} 

@@ -9,12 +9,7 @@ export default function Information (props){
             <p> School City: {props.schoolCityProp} </p>
             <p> School State: {props.schoolStateProp} </p>
             <p> School Zip: {props.schoolZipProp} </p>
-
-
-
-
         </div>
     )
 }
 
-// Information.defaultProps = {guessProp: "Not guessed yet"};
