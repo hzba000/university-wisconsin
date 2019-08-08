@@ -6,7 +6,7 @@
 <h2>Local Installation</h2>
 <p>Clone this repo: https://github.com/hzba000/university-wisconsin</p>
 <p>Type 'npm install' into the project folder</p>
-<p>Add an .env file to the root folder with an API key for the college scorecard API</p>
+<p>Add an .env file to the root folder with an API key for the college scorecard API --> (REACT_APP_API_KEY=YOUR_KEY)</p>
 <p>Type 'npm run start' to launch the site in your browser
  
  <h2>Things you can do</h2>
