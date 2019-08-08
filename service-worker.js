@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/university-wisconsin/precache-manifest.5dbe2b526d6d35fc5e490cfd2c8bfdbd.js"
+  "/university-wisconsin/precache-manifest.e3e23f3bc838d07a8c81dfcb7e0daa23.js"
 );
 
 self.addEventListener('message', (event) => {
