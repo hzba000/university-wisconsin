@@ -1,68 +1,46 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1> University of Wisconsin Data Concept </h1>
 
-## Available Scripts
+<h2>Purpose</h2>
+<p>This is a data visualization mockup for the University of Wisconsin</p>
 
-In the project directory, you can run:
+<h2> Live Link </h2>
+<a href="https://hzba000.github.io/university-wisconsin/"> Live Link </a>
 
-### `npm start`
+<h2>Local Installation</h2>
+<p>Clone this repo: https://github.com/hzba000/university-wisconsin</p>
+<p>Type 'npm install' after navigating to the project folder in your terminal</p>
+<p>Add an .env file to the root folder with an API key for the college scorecard API --> (REACT_APP_API_KEY=YOUR_KEY)</p>
+<p>Type 'npm run start' to launch the site in your browser
+ 
+ <h2>Things you can do</h2>
+ <p>View Data by dragging your mouse over the donut charts</p>
+ <p>Print the website by clicking on the 'Print' button</p>
+ <p>Download the data used for visualization by clicking on the 'Download CSV' button</p>
+ <p>Open in Pdf by clicking on the 'Generate Pdf'</p>
+ 
+ <h2>Known issues</h2>
+ <p>Need more media queries for responsiveness</p>
+ <p>When printing, the page prints everything it sees on the page (unfortunately, because I have a mouseover event to display numbers, 
+     printing only shows the graphs and legends -- data is still available by downloading)</p>
+  <p>I could combine the graph components and feed them different data from my Landing component(the parent)...DRY...</p>
+  <p>I attempted to use jsPDF for conversion from HTML to PDF. I need more time to work through the conversion of SVG elements to canvas 
+     and then to PDF</p>
+  <p>I know the legends should be clickable to view hard data(Currently I only have a mouseover event)</p>
+  <p>There is some variability in the way elements are presented on various browsers, I'm not sure what is causing it</p>
+  <p>There are touchups needed to make the data easier to read and enhance the user experience</p>
+  <p>I need to add code to help with accessibility issues</p>
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
 
-### `npm test`
+ 
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+  
+ 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
