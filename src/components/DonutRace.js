@@ -31,7 +31,7 @@ export default class DonutRace extends React.Component{
         var thickness = 40;
 
         var radius = Math.min(width, height) / 2;
-        var color = d3.scaleOrdinal(d3.schemeCategory10);
+        var color = d3.scaleOrdinal(d3.schemeAccent);
 
         var svg = d3.select("#chart")
                     .append('svg')
@@ -102,7 +102,7 @@ export default class DonutRace extends React.Component{
 // *******************************
 
         // select the svg area
-        var Svg = d3.select("#legend")
+        var Svg = d3.select("#legend-race")
     
         // create a list of keys
 
@@ -110,7 +110,7 @@ export default class DonutRace extends React.Component{
         // Usually you have a color scale in your chart already
         var colorLegend = d3.scaleOrdinal()
         .domain(raceNameArray)
-        .range(d3.schemeCategory10);
+        .range(d3.schemeAccent);
     
         // Add one dot in the legend for each name.
         Svg.selectAll("mydots")
@@ -140,7 +140,7 @@ export default class DonutRace extends React.Component{
         return(
             <div className="flex-container-donut-race">
                 <div id="chart"></div>
-                <svg id="legend"></svg>
+                <svg id="legend-race"></svg>
             </div>
         )
     }

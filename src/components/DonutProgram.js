@@ -25,7 +25,7 @@ export default class DonutProgram extends React.Component{
             var thickness = 40;
 
             var radius = Math.min(width, height) / 2;
-            var color = d3.scaleOrdinal(d3.schemeCategory10);
+            var color = d3.scaleOrdinal(d3.schemeSet3);
 
             var svg = d3.select("#chart-program")
                         .append('svg')
@@ -103,7 +103,7 @@ export default class DonutProgram extends React.Component{
             // Usually you have a color scale in your chart already
             var colorLegend = d3.scaleOrdinal()
                                 .domain(raceNameArray)
-                                .range(d3.schemeCategory10);
+                                .range(d3.schemeSet3);
       
             // Add one dot in the legend for each name.
             Svg.selectAll("mydots")

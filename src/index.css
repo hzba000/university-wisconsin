@@ -10,11 +10,16 @@
 @page { size: auto;  margin: 0mm; }
 
 .flex-container-graphs{
-  display: flex;
+  /* display: flex;
   flex-direction:row;
   align-items: center;
   justify-content: center;
+  flex-wrap:wrap; */
+  display: flex;
+  flex-direction: row;
   flex-wrap:wrap;
+  justify-content:center;
+  background-color:rgba(147, 31, 33, 0.5);
 }
 
 /* .flex-container-donut-race, .flex-container-donut-program, .flex-container-donut-tuition{
@@ -28,7 +33,7 @@
 
 .pie text {
   font-family: "Verdana";
-  fill: #888;
+  fill: white
 }
 
 .pie .name-text{
@@ -45,23 +50,34 @@
   font-family: "Paytone One";
 }
 html{
-  background-image: url("./components/aerial-image.jpeg");
+  /* background-image: url("./components/aerial-image.jpeg");
+  background-size: stretch;
+  background-repeat: no-repeat;  */
+
+  background: url("./components/aerial-image.jpeg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 body{
-  width: 100%;
-  height: 85vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* width: 100%;
+  height: 85vh; */
 }
 
 .chart-container{
-  position: relative;
+  /* position: relative; */
 }
 
 .flex-container-donut-tuition, .flex-container-donut-race, .flex-container-donut-tuition, .flex-container-donut-program{
-  background-color: rgba(240,255,240,0.5)
+  /* background-color: rgba(240,255,240,0.5) */
+  /* background-color:   rgba(147, 31, 33, 0.5); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .flex-information-container{
@@ -73,9 +89,17 @@ body{
 
 }
 
-.flex-information-container > div,p{
-  height: 300px;
-  width: 300px;
-  background-color: red;
+/* .flex-information-container > div > p{
+  height: 100px;
+  width: 200px;
+  background-color: rgba(147, 31, 33, 0.5);
   margin-right: 15px;
+  text-align:center;
+  font-size: 25px;
+  color: white;
+} */
+
+#legend-tuition, #legend-program, #legend-race{
+  height:1100px;
+  background-color:white;
 }
