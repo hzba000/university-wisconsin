@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/hzba000/university-wisconsin/static/css/main.f42345b4.chunk.css",
-    "main.js": "/hzba000/university-wisconsin/static/js/main.b118f86b.chunk.js",
-    "main.js.map": "/hzba000/university-wisconsin/static/js/main.b118f86b.chunk.js.map",
-    "runtime~main.js": "/hzba000/university-wisconsin/static/js/runtime~main.4d80115b.js",
-    "runtime~main.js.map": "/hzba000/university-wisconsin/static/js/runtime~main.4d80115b.js.map",
-    "static/js/2.02e7625e.chunk.js": "/hzba000/university-wisconsin/static/js/2.02e7625e.chunk.js",
-    "static/js/2.02e7625e.chunk.js.map": "/hzba000/university-wisconsin/static/js/2.02e7625e.chunk.js.map",
-    "index.html": "/hzba000/university-wisconsin/index.html",
-    "precache-manifest.c8604eeda491d85a575dc5ce1059bb03.js": "/hzba000/university-wisconsin/precache-manifest.c8604eeda491d85a575dc5ce1059bb03.js",
-    "service-worker.js": "/hzba000/university-wisconsin/service-worker.js",
-    "static/css/main.f42345b4.chunk.css.map": "/hzba000/university-wisconsin/static/css/main.f42345b4.chunk.css.map",
-    "static/media/index.css": "/hzba000/university-wisconsin/static/media/aerial-image.415ae717.jpeg"
+    "main.css": "/university-wisconsin/static/css/main.56a6b7a0.chunk.css",
+    "main.js": "/university-wisconsin/static/js/main.b118f86b.chunk.js",
+    "main.js.map": "/university-wisconsin/static/js/main.b118f86b.chunk.js.map",
+    "runtime~main.js": "/university-wisconsin/static/js/runtime~main.0e4de279.js",
+    "runtime~main.js.map": "/university-wisconsin/static/js/runtime~main.0e4de279.js.map",
+    "static/js/2.d7df333b.chunk.js": "/university-wisconsin/static/js/2.d7df333b.chunk.js",
+    "static/js/2.d7df333b.chunk.js.map": "/university-wisconsin/static/js/2.d7df333b.chunk.js.map",
+    "index.html": "/university-wisconsin/index.html",
+    "precache-manifest.235b5ed12efc469fb2c3806ba5a1044b.js": "/university-wisconsin/precache-manifest.235b5ed12efc469fb2c3806ba5a1044b.js",
+    "service-worker.js": "/university-wisconsin/service-worker.js",
+    "static/css/main.56a6b7a0.chunk.css.map": "/university-wisconsin/static/css/main.56a6b7a0.chunk.css.map",
+    "static/media/index.css": "/university-wisconsin/static/media/aerial-image.415ae717.jpeg"
   }
 }
