@@ -2,9 +2,11 @@
   visibility:hidden;
 }
 @media print
-{
-    .no-print { page-break-after: always; display:block;}
-    .printable { display: block; }
+{   .no-print{display:none;}
+    /* .no-print { page-break-after: always; display:block;} */
+    .printable { display: block;}
+    body {transform: scale(.7); zoom:60%;} 
+    /* html {page-break-inside: avoid;} */
 }
 
 @page { size: auto;  margin: 0mm; }
@@ -88,7 +90,12 @@ body{
   flex-wrap:wrap;
   background-color: darkred;
   color:white;
+  text-align:center;
 
+}
+
+.flex-vertical a{
+  color:white;
 }
 
 /* .flex-information-container > div > p{
@@ -109,4 +116,16 @@ body{
 .school-name{
   border-bottom: 10px darkred solid;
   color: darkred;
+}
+
+.graph-header{
+  color:white;
+  border-bottom:5px white solid;
+}
+
+@media only screen and (max-width: 600px) {
+  #legend-tuition, #legend-race{
+    height:300px;
+    background-color:white;
+  }
 }

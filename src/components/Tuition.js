@@ -49,7 +49,7 @@ export default class Tuition extends React.Component{
                     .data(pie(data))
                     .enter()
                     .append("g")
-                    .on("mouseover", function(d) {             
+                    .on("mouseover", function(d) {
                         let g = d3.select(this)
                         .style("cursor", "pointer")
                         .style("fill", "black")
@@ -64,7 +64,7 @@ export default class Tuition extends React.Component{
 
                         g.append("text")
                         .attr("class", "value-text")
-                        .text(`${d.data.value}`)
+                        .text(`${`${(d.data.value*100).toFixed(2)+'%'}`}`)
                         .attr('text-anchor', 'middle')
                         .attr('dy', '.6em');
                     })
@@ -93,6 +93,8 @@ export default class Tuition extends React.Component{
                     .attr('text-anchor', 'middle')
                     .attr('dy', '.35em')
                     .text(text);
+
+
 // *******************************
 
         // select the svg area
@@ -134,6 +136,7 @@ export default class Tuition extends React.Component{
         this.makeDonutGraph();
         return(
             <div className="flex-container-donut-tuition">
+                <h1 className="graph-header">Tuition</h1>
                 <div id="chart-tuition" className="printable"></div>
                 <svg id="legend-tuition"></svg>
             </div>

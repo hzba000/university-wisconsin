@@ -70,7 +70,7 @@ export default class DonutRace extends React.Component{
 
                         g.append("text")
                         .attr("class", "value-text")
-                        .text(`${d.data.value}`)
+                        .text(`${`${(d.data.value*100).toFixed(2)+'%'}`}`)
                         .attr('text-anchor', 'middle')
                         .attr('dy', '.6em');
                     })
@@ -139,6 +139,7 @@ export default class DonutRace extends React.Component{
         this.makeDonutGraph();
         return(
             <div className="flex-container-donut-race">
+                <h1 className="graph-header">Race</h1>
                 <div id="chart"></div>
                 <svg id="legend-race"></svg>
             </div>

@@ -89,9 +89,9 @@ export default class Landing extends React.Component{
             formatEthnicityArray
          ];
 
-        var csv = 'Parent Education Level\n';
+        var csv = 'Data\n';
         data.forEach(function(row) {
-                csv += row.join(',')+"\n";
+                csv += row.join(','+"\n")+"\n";
                 csv += "\n";
         });
 

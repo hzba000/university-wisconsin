@@ -64,7 +64,7 @@ export default class DonutProgram extends React.Component{
 
                             g.append("text")
                             .attr("class", "value-text")
-                            .text(`${d.data.value}`)
+                            .text(`${(d.data.value*100).toFixed(2)+'%'}`)
                             .attr('text-anchor', 'middle')
                             .attr('dy', '.6em');
                         })
@@ -134,6 +134,7 @@ export default class DonutProgram extends React.Component{
         this.makeDonutGraph();
         return(
             <div className="flex-container-donut-program">
+                <h1 className="graph-header">Programs</h1>
                 <div id="chart-program"></div>
                 <svg id="legend-program"></svg>
             </div>

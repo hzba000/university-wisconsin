@@ -12,7 +12,7 @@ export default function DownloadPdf (props){
 
             <div id="editor"></div> */}
 
-            <button id="cmd" onClick={props.downloadPdf} >Generate PDF</button>
+            <button id="cmd" className="no-print" onClick={props.downloadPdf} >Generate PDF</button>
         </div>
     )
 }
