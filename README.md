@@ -23,6 +23,7 @@
   <p>I attempted to use jsPDF for conversion from HTML to PDF. I need more time to work through the conversion of SVG elements to canvas 
      and then to PDF</p>
   <p>I know the legend should be clickable to view hard data(Currently I only have a hover event)</p>
+  <p>There is some variability in the way elements are presented on various browsers, I'm not sure what is causing it</p>
 
 
  
