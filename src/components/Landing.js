@@ -173,9 +173,11 @@ export default class Landing extends React.Component{
         if(this.state.fetchstatus === "done"){
             return(
                 <div className="parent">
-                    <PrintButton printScreen = {this.printScreen}/>
-                    <DownloadData downloadData={this.downloadData}/>
-                    <DownloadPdf downloadPdf={this.downloadPdf}/>
+                    <div className="button-horizontal">
+                        <PrintButton printScreen = {this.printScreen}/>
+                        <DownloadData downloadData={this.downloadData}/>
+                        <DownloadPdf downloadPdf={this.downloadPdf}/>
+                    </div>
                     <Information 
                         schoolNameProp={schoolNameProp} 
                         schoolUrlProp={schoolUrlProp} 
@@ -195,7 +197,6 @@ export default class Landing extends React.Component{
                         <DonutProgram programDataProp={programDataProp} raceWhiteProp={raceWhiteProp}/>
                         <Tuition parentDataProp={parentDataProp} raceWhiteProp={raceWhiteProp}/>
                     </div>
-  
                 </div>
             )
         }
