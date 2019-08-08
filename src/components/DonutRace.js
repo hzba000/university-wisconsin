@@ -100,7 +100,7 @@ export default class DonutRace extends React.Component{
                     .attr('dy', '.35em')
                     .text(text);
 // *******************************
-
+        // Make legends
         // select the svg area
         var Svg = d3.select("#legend-race")
     

@@ -1,13 +1,20 @@
+@import 'https://fonts.googleapis.com/css?family=Paytone+One';
+
+*{
+  font-family: "Paytone One";
+}
+
+html{
+  background: url("./components/aerial-image.jpeg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 #dummy_download{
   visibility:hidden;
 }
-@media print
-{   .no-print{display:none;}
-    .printable { display: block;}
-    body {transform: scale(.7); zoom:60%;} 
-}
-
-@page { size: auto;  margin: 0mm; }
 
 .flex-container-graphs{
   display: flex;
@@ -34,25 +41,11 @@
   font-size: 3em;
 }
 
-@import 'https://fonts.googleapis.com/css?family=Paytone+One';
-
-*{
-  font-family: "Paytone One";
-}
-html{
-  background: url("./components/aerial-image.jpeg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
 .flex-container-donut-tuition, .flex-container-donut-race, .flex-container-donut-tuition, .flex-container-donut-program{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
 .flex-information-container{
@@ -64,7 +57,6 @@ html{
   background-color: darkred;
   color:white;
   text-align:center;
-
 }
 
 .flex-vertical a{
@@ -93,9 +85,31 @@ html{
   align-items:right;
 }
 
+.button{
+  background-color: white; 
+  color: black; 
+  border: 2px solid brown;
+}
+
+.button:hover{
+  background-color:brown;
+  border: 2px solid white;
+  color:white;
+  cursor:pointer;
+}
+
 @media only screen and (max-width: 600px) {
   #legend-tuition, #legend-race{
     height:300px;
     background-color:white; 
+    color:white;
   }
 }
+
+@media print
+{   .no-print{display:none;}
+    .printable { display: block;}
+    body {transform: scale(.7); zoom:60%;} 
+}
+
+@page { size: auto;  margin: 0mm; }

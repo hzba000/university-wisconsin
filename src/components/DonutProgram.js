@@ -94,7 +94,7 @@ export default class DonutProgram extends React.Component{
                         .attr('dy', '.35em')
                         .text(text);
       // *******************************
-      
+            //Make legends
             // select the svg area
             var Svg = d3.select("#legend-program")
       

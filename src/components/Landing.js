@@ -57,7 +57,7 @@ export default class Landing extends React.Component{
             'elementHandlers': specialElementHandlers
         });
     
-        doc.save('sample-file.pdf');
+        doc.save('wisconsin-data.pdf');
     }
 
     componentWillMount(){
@@ -98,7 +98,7 @@ export default class Landing extends React.Component{
         var hiddenElement = document.getElementById('dummy_download');
         hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
         hiddenElement.target = '_blank';
-        hiddenElement.download = 'people.csv';
+        hiddenElement.download = 'wisconsin-data.csv';
         hiddenElement.click();
     }
 
@@ -145,7 +145,8 @@ export default class Landing extends React.Component{
                         raceasian: myJson.results[0].latest.student.demographics.race_ethnicity.asian,
                         raceblack: myJson.results[0].latest.student.demographics.race_ethnicity.black,
                 })
-            }).then(this.setState({fetchstatus:"done"}))
+            })
+            .then(this.setState({fetchstatus:"done"}))
     }
 
     render(){
