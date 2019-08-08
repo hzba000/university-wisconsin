@@ -9,23 +9,21 @@
 
 @page { size: auto;  margin: 0mm; }
 
-.flex-container{
+.flex-container-graphs{
   display: flex;
-  flex-direction:column;
+  flex-direction:row;
   align-items: center;
   justify-content: center;
   flex-wrap:wrap;
 }
 
-.flex-container-donut-race, .flex-container-donut-program, .flex-container-donut-tuition{
+/* .flex-container-donut-race, .flex-container-donut-program, .flex-container-donut-tuition{
   display: flex;
   flex-wrap:wrap;
-
-
-}
+} */
 
 .pie {
-  margin: 20px;
+  margin: 20px; 
 }
 
 .pie text {
@@ -47,7 +45,7 @@
   font-family: "Paytone One";
 }
 html{
-  background: #c5c5c6;
+  background-image: url("./components/aerial-image.jpeg");
 }
 
 body{
@@ -62,65 +60,22 @@ body{
   position: relative;
 }
 
-svg{
-  /* box-shadow: 0px 20px 50px -18px #aaa; */
-  border-radius: .123rem;
-}
-.bar {
-  fill: #1888d6;
-  transition: all 150ms ease;
+.flex-container-donut-tuition, .flex-container-donut-race, .flex-container-donut-tuition, .flex-container-donut-program{
+  background-color: rgba(240,255,240,0.5)
 }
 
-.bar:hover {
-  fill: #09163d;
+.flex-information-container{
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap:wrap;
+
 }
 
-.axis--x path {
-  visibility: hidden;
+.flex-information-container > div,p{
+  height: 300px;
+  width: 300px;
+  background-color: red;
+  margin-right: 15px;
 }
-
-svg text{
-  fill: black;
-}
-
-.background-style{
-  background: #f1f2f3;
-}
-
-/* tip */
-.tip{
-  width: 3rem;
-  background-color: #eee;
-  text-align: center;
-    box-shadow: 0px 2px 10px -2px #aaa;
-  border: 2px solid #444;
-  transition: all 160ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-}
-.tip::after{
-    content: " ";
-    position: absolute;
-    bottom: -.5rem;
-    left: 50%;
-    margin-left: -.5rem;
-    border-style: solid;
-    border-width: .5rem .5rem 0 .5rem;
-    border-color: #444 transparent transparent transparent;
-    }
-
-    html, body {
-      margin: 0;
-      height: 100%
-    }
-    .bar {
-      fill: #0080FF;
-    }
-    
-    .bar:hover {
-      fill: #003366;
-      
-    }
-    .text {
-      fill: white;
-      font-family: sans-serif
-    }
-  

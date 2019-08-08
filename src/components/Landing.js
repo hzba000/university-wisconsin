@@ -9,6 +9,7 @@ import Tuition from './Tuition'
 import PrintButton from './PrintButton'
 import DownloadData from './DownloadData'
 import DownloadPdf from './DownloadPdf'
+import Spinner from './Spinner'
 
 require('dotenv').config()
 
@@ -27,6 +28,7 @@ export default class Landing extends React.Component{
             schoolcity: '',
             schoolstate: '',
             schoolzip: '',
+            schoolsize: '',
             racewhite: null,
             racehispanic: null,
             raceasian: null,
@@ -34,6 +36,7 @@ export default class Landing extends React.Component{
             programdata: null,
             ethnicitydata: null,
             parentdata: null,
+            fetchstatus: "loading",
         }
         this.fetchData = this.fetchData.bind(this);
         this.printScreen = this.printScreen.bind(this);
@@ -136,15 +139,17 @@ export default class Landing extends React.Component{
                         schoolcity: myJson.results[0].school.city,
                         schoolstate: myJson.results[0].school.state,
                         schoolzip: myJson.results[0].school.zip,
+                        schoolsize: myJson.results[0].latest.student.size,
                         racewhite: myJson.results[0].latest.student.demographics.race_ethnicity.white,
                         racehispanic: myJson.results[0].latest.student.demographics.race_ethnicity.hispanic,
                         raceasian: myJson.results[0].latest.student.demographics.race_ethnicity.asian,
                         raceblack: myJson.results[0].latest.student.demographics.race_ethnicity.black,
                 })
-            });
+            }).then(this.setState({fetchstatus:"done"}))
     }
 
     render(){
+        const schoolSizeProp = this.state.schoolsize;
         const schoolNameProp = this.state.schoolname;
         const schoolUrlProp = this.state.schoolurl;
         const schoolCityProp = this.state.schoolcity;
@@ -156,33 +161,46 @@ export default class Landing extends React.Component{
         const raceBlackProp = this.state.raceblack;
         const programDataProp = this.state.programdata;
         const parentDataProp = this.state.parentdata;
+        const fetchStatusProp = this.state.fetchstatus;
         // const ethnicityDataProp = this.state.ethnicityDataProp;
 
-        return(
-            <div className="parent">
-                <div className="flex-container">
-                    <DonutRace 
-                        raceWhiteProp={raceWhiteProp}
-                        raceHispanicProp={raceHispanicProp}
-                        raceAsianProp={raceAsianProp}
-                        raceBlackProp={raceBlackProp}
-                        // ethnicityDataProp={ethnicityDataProp}
+        if(this.state.fetchstatus === "loading"){
+            return(
+                <Spinner fetchStatusProp={fetchStatusProp} />
+            )
+        }
+
+        if(this.state.fetchstatus === "done"){
+            return(
+                <div className="parent">
+                    <PrintButton printScreen = {this.printScreen}/>
+                    <DownloadData downloadData={this.downloadData}/>
+                    <DownloadPdf downloadPdf={this.downloadPdf}/>
+                    <Information 
+                        schoolNameProp={schoolNameProp} 
+                        schoolUrlProp={schoolUrlProp} 
+                        schoolCityProp={schoolCityProp}
+                        schoolStateProp={schoolStateProp}
+                        schoolZipProp={schoolZipProp}
+                        schoolSizeProp = {schoolSizeProp}
                     />
-                    <DonutProgram programDataProp={programDataProp} raceWhiteProp={raceWhiteProp}/>
-                    <Tuition parentDataProp={parentDataProp} raceWhiteProp={raceWhiteProp}/>
+                    <div className="flex-container-graphs">
+                        <DonutRace 
+                            raceWhiteProp={raceWhiteProp}
+                            raceHispanicProp={raceHispanicProp}
+                            raceAsianProp={raceAsianProp}
+                            raceBlackProp={raceBlackProp}
+                            // ethnicityDataProp={ethnicityDataProp}
+                        />
+                        <DonutProgram programDataProp={programDataProp} raceWhiteProp={raceWhiteProp}/>
+                        <Tuition parentDataProp={parentDataProp} raceWhiteProp={raceWhiteProp}/>
+                    </div>
+  
                 </div>
-                <PrintButton printScreen = {this.printScreen}/>
-                <DownloadData downloadData={this.downloadData}/>
-                <DownloadPdf downloadPdf={this.downloadPdf}/>
-                <Information 
-                    schoolNameProp={schoolNameProp} 
-                    schoolUrlProp={schoolUrlProp} 
-                    schoolCityProp={schoolCityProp}
-                    schoolStateProp={schoolStateProp}
-                    schoolZipProp={schoolZipProp}
-                />
-            </div>
-        )
+            )
+        }
+
+           
     }
 
 }
