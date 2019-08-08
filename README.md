@@ -27,6 +27,9 @@
      and then to PDF</p>
   <p>I know the legends should be clickable to view hard data(Currently I only have a mouseover event)</p>
   <p>There is some variability in the way elements are presented on various browsers, I'm not sure what is causing it</p>
+  <p>There are touchups needed to make the data easier to read and enhance the user experience</p>
+  <p>I need to add code to help with accessibility issues</p>
+
 
 
  
