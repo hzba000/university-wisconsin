@@ -41,7 +41,7 @@ html{
   font-size: 3em;
 }
 
-.flex-container-donut-tuition, .flex-container-donut-race, .flex-container-donut-tuition, .flex-container-donut-program{
+.flex-container-donut-parent-education, .flex-container-donut-race, .flex-container-donut-parent-education, .flex-container-donut-program{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,7 +63,7 @@ html{
   color:white;
 }
 
-#legend-tuition, #legend-program, #legend-race{
+#legend-parent-education, #legend-program, #legend-race{
   height:1100px;
   background-color:white;
 }
@@ -99,7 +99,7 @@ html{
 }
 
 @media only screen and (max-width: 600px) {
-  #legend-tuition, #legend-race{
+  #legend-parent-education, #legend-race{
     height:300px;
     background-color:white; 
     color:white;

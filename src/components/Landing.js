@@ -5,7 +5,7 @@ import * as jsPDF from 'jspdf'
 import DonutRace from './DonutRace'
 import DonutProgram from './DonutProgram'
 import Information from './Information'
-import Tuition from './Tuition'
+import ParentEducation from './ParentEducation'
 import PrintButton from './PrintButton'
 import DownloadData from './DownloadData'
 import DownloadPdf from './DownloadPdf'
@@ -196,7 +196,7 @@ export default class Landing extends React.Component{
                             // ethnicityDataProp={ethnicityDataProp}
                         />
                         <DonutProgram programDataProp={programDataProp} raceWhiteProp={raceWhiteProp}/>
-                        <Tuition parentDataProp={parentDataProp} raceWhiteProp={raceWhiteProp}/>
+                        <ParentEducation parentDataProp={parentDataProp} raceWhiteProp={raceWhiteProp}/>
                     </div>
                 </div>
             )

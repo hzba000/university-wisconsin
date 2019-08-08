@@ -2,7 +2,7 @@ import * as d3 from "d3";
 import React from 'react';
 require('dotenv').config()
 
-export default class Tuition extends React.Component{
+export default class ParentEducation extends React.Component{
     constructor(props){
         super(props)
         this.state={}
@@ -27,7 +27,7 @@ export default class Tuition extends React.Component{
         var radius = Math.min(width, height) / 2;
         var color = d3.scaleOrdinal(d3.schemeSet2);
 
-        var svg = d3.select("#chart-tuition")
+        var svg = d3.select("#chart-parent-education")
                     .append('svg')
                     .attr('class', 'pie')
                     .attr('width', width)
@@ -98,7 +98,7 @@ export default class Tuition extends React.Component{
 // *******************************
 
         // select the svg area
-        var Svg = d3.select("#legend-tuition")
+        var Svg = d3.select("#legend-parent-education")
 
         // create a list of keys
 
@@ -135,10 +135,10 @@ export default class Tuition extends React.Component{
     render(){
         this.makeDonutGraph();
         return(
-            <div className="flex-container-donut-tuition">
-                <h1 className="graph-header">Tuition</h1>
-                <div id="chart-tuition" className="printable"></div>
-                <svg id="legend-tuition"></svg>
+            <div className="flex-container-donut-parent-education">
+                <h1 className="graph-header">Parent Education</h1>
+                <div id="chart-parent-education" className="printable"></div>
+                <svg id="legend-parent-education"></svg>
             </div>
         )
     }
