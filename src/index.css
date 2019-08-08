@@ -84,8 +84,10 @@ body{
   display: flex;
   flex-direction:row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap:wrap;
+  background-color: darkred;
+  color:white;
 
 }
 
@@ -102,4 +104,9 @@ body{
 #legend-tuition, #legend-program, #legend-race{
   height:1100px;
   background-color:white;
+}
+
+.school-name{
+  border-bottom: 10px darkred solid;
+  color: darkred;
 }
