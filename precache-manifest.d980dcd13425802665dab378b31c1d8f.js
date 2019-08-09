@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a6d074f80e06005e4dc36fb51c163af0",
+    "revision": "3a34e8c391a439832655a73396dfd0f0",
     "url": "/university-wisconsin/index.html"
   },
   {
-    "revision": "577925bac7bde8747cab",
-    "url": "/university-wisconsin/static/css/main.73146bab.chunk.css"
+    "revision": "b98752cd437b93a9200e",
+    "url": "/university-wisconsin/static/css/main.5a866a4e.chunk.css"
   },
   {
     "revision": "8789b9e425b5f5eb21e8",
     "url": "/university-wisconsin/static/js/2.d7df333b.chunk.js"
   },
   {
-    "revision": "577925bac7bde8747cab",
+    "revision": "b98752cd437b93a9200e",
     "url": "/university-wisconsin/static/js/main.e9174bef.chunk.js"
   },
   {

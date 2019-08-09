@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/university-wisconsin/static/css/main.73146bab.chunk.css",
+    "main.css": "/university-wisconsin/static/css/main.5a866a4e.chunk.css",
     "main.js": "/university-wisconsin/static/js/main.e9174bef.chunk.js",
     "main.js.map": "/university-wisconsin/static/js/main.e9174bef.chunk.js.map",
     "runtime~main.js": "/university-wisconsin/static/js/runtime~main.0e4de279.js",
@@ -8,9 +8,9 @@
     "static/js/2.d7df333b.chunk.js": "/university-wisconsin/static/js/2.d7df333b.chunk.js",
     "static/js/2.d7df333b.chunk.js.map": "/university-wisconsin/static/js/2.d7df333b.chunk.js.map",
     "index.html": "/university-wisconsin/index.html",
-    "precache-manifest.e3e23f3bc838d07a8c81dfcb7e0daa23.js": "/university-wisconsin/precache-manifest.e3e23f3bc838d07a8c81dfcb7e0daa23.js",
+    "precache-manifest.d980dcd13425802665dab378b31c1d8f.js": "/university-wisconsin/precache-manifest.d980dcd13425802665dab378b31c1d8f.js",
     "service-worker.js": "/university-wisconsin/service-worker.js",
-    "static/css/main.73146bab.chunk.css.map": "/university-wisconsin/static/css/main.73146bab.chunk.css.map",
+    "static/css/main.5a866a4e.chunk.css.map": "/university-wisconsin/static/css/main.5a866a4e.chunk.css.map",
     "static/media/index.css": "/university-wisconsin/static/media/aerial-image.415ae717.jpeg"
   }
 }
