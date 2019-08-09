@@ -109,7 +109,7 @@ html{
 @media print
 {   .no-print{display:none;}
     .printable { display: block;}
-    body {transform: scale(.7); zoom:60%;} 
+    body {transform: scale(.7); zoom:50%;} 
 }
 
 @page { size: auto;  margin: 0mm; }
